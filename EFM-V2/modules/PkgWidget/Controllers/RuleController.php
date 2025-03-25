@@ -17,7 +17,7 @@ class RuleController extends Controller
 
     public function showPrototype()
     {
-        $product = ['stock' => 2, 'prix' => 150];
+        $product = ['stock' => 1, 'prix' => 150];
         $rule = 'stock < 5 && prix > 100';
         $result = $this->ruleService->evaluate($rule, $product);
 

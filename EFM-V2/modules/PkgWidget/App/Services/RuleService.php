@@ -1,29 +1,35 @@
 <?php
-
 namespace Modules\PkgWidget\App\Services;
 
 class RuleService
 {
     public function evaluate(string $expression, array $data): bool
     {
-        // Vérifier que toutes les clés sont valides
+        // Remplacer les variables par leurs valeurs en utilisant une expression régulière
         foreach ($data as $key => $value) {
-            if (!preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', $key)) {
-                throw new \InvalidArgumentException("Clé invalide : {$key}");
-            }
+            // Remplacer chaque clé dans l'expression avec sa valeur
+            $expression = preg_replace("/\b$key\b/", $value, $expression);
         }
 
-        // Extraire les clés du tableau en variables
-        extract($data);
-
-        // Exécuter l'évaluation de manière sécurisée
-        try {
-            return eval("return {$expression};");
-        } catch (\Throwable $e) {
-            return false; // En cas d'erreur, on renvoie false
-        }
+        return eval("return $expression;");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // class AlertService
