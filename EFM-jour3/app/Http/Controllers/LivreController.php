@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LivreRequest;
 use App\Models\Livre;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
+
+use function Laravel\Prompts\error;
 
 class LivreController extends Controller
 {
@@ -27,17 +31,17 @@ class LivreController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LivreRequest $request)
     {
-        $validated = $request->validate([
-            'titre'=> 'required|string',
-            'auteur'=> 'required|string',
-            'nombre_pages'=> 'required|numeric',
-            'categorie'=> 'required|string'
+       
+        Livre::create([
+            'titre'=> $request->titre ,
+            'auteur'=> $request->auteur,
+            'nombre_pages'=> $request->nombre_pages,
+            'categorie'=> $request->categorie
         ]);
-        Livre::create($validated);
         
-      return redirect()->route('livre.index');
+      return redirect()->route('livre.index')->with('success', 'livre est ajouté avec succés !');    
     }
 
     /**

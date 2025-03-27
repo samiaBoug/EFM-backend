@@ -6,34 +6,48 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+   
 </head>
-<body>
+<body class="container">
     <h2>Ajouter un Livre : </h2>
+    @if (session('success'))
+          <div class="alert alert-success">{{session('success')}}</div>
+    @endif
     <form action="{{ route('livre.store')}}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="" class="form-label">Titre : </label>
-            <input type="text" name="titre" class="form-control" id="" >
-            <span></span>
+            <input type="text" name="titre" class="form-control" id="" >         
+            @error('titre')
+             <div class="alert alert-danger">{{$message}}</div>
+            @enderror    
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Auteur : </label>
             <input type="text" name="auteur" class="form-control" id="" >
+            @error('titre')
+             <div class="alert alert-danger">{{$message}}</div>
+            @enderror 
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Nombre des pages : </label>
             <input type="number" name="nombre_pages" class="form-control" id="" >
+            @error('nombre_pages')
+             <div class="alert alert-danger">{{$message}}</div>
+            @enderror 
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Catégorie : </label>
             <input type="text" name="categorie" class="form-control" id="" >
+            @error('categorie')
+             <div class="alert alert-danger">{{$message}}</div>
+            @enderror 
         </div>
         <button type="submit" class="btn btn-primary">Ajouter</button>
 
     </form>
     <div>
+        <h3 class="h3">Liste des livres :</h3>
     <table class="table">
   <thead>
     <tr>

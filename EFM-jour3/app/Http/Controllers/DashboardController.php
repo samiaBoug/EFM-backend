@@ -16,5 +16,10 @@ class DashboardController extends Controller
        return Livre::orderBy('created_at', 'desc')->take(5)->get();
        
     }
+    public function index(){
+        $totale = $this->totaleLivre();
+        $lastLivres = $this->lastLivres();
+        return view('dashboard' , compact('totale', 'lastLivres'));
+    }
 }
 
