@@ -29,7 +29,15 @@ class LivreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'titre'=> 'required|string',
+            'auteur'=> 'required|string',
+            'nombre_pages'=> 'required|numeric',
+            'categorie'=> 'required|string'
+        ]);
+        Livre::create($validated);
+        
+      return redirect()->route('livre.index');
     }
 
     /**

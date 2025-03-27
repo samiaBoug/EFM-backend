@@ -16,6 +16,7 @@
         <div class="mb-3">
             <label for="" class="form-label">Titre : </label>
             <input type="text" name="titre" class="form-control" id="" >
+            <span></span>
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Auteur : </label>
@@ -27,10 +28,38 @@
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Catégorie : </label>
-            <input type="text" name="nombre_pages" class="form-control" id="" >
+            <input type="text" name="categorie" class="form-control" id="" >
         </div>
         <button type="submit" class="btn btn-primary">Ajouter</button>
 
     </form>
+    <div>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titre</th>
+      <th scope="col">Auteur</th>
+      <th scope="col">Nombre des pages</th>
+      <th scope="col">Catégorie</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($livres as $livre)
+    <tr>
+      <td>{{$livre->id}}</td>
+      <td>{{$livre->titre}}</td>
+      <td>{{$livre->auteur}}</td>
+      <td>{{$livre->nombre_pages}}</td>
+      <td>{{$livre->categorie}}</td>
+    </tr>
+    @endforeach
+  </tbody>
+</table>
+<div>{{ $livres->links() }}</div>
+
+<div></div>
+    </div>
 </body>
 </html>
