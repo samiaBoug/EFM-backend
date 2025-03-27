@@ -14,14 +14,22 @@
         <div class="card-header">
             Nombre totale des livres : 
         </div>
+    @if ($totale === 0)
+      <div class="alert alert-warning">pas de livres !</div>
+    @else
+
         <div>{{$totale}}</div>
     </div>
+    @endif
      <!-- 5 dernier livre ajouer  -->
      <div class="card m-2" style="width: 18rem;">
   <div class="card-header">
-    Les dérnières livre ajoutées : 
+    Les 5 dérnières livre ajoutées : 
   </div>
-  <ul class="list-group list-group-flush">
+  @if ($totale < 5)
+    <div class="alert alert-warning">le nombre des livres est inférieur à 5 !</div>
+  @else
+     <ul class="list-group list-group-flush">
     @foreach($lastLivres as $livre)
     <li class="list-group-item">
     <span class="badge text-bg-warning">{{$livre->categorie}}</span></h1>
@@ -29,6 +37,8 @@
     </li>
     @endforeach
   </ul>
+  @endif
+ 
 </div>
 </body>
 </html>
