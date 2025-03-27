@@ -20,5 +20,42 @@ class LivreSeeder extends Seeder
             'nombre_pages'=> 11,
             'categorie'=> 'categorie'
         ]);
+        Livre::create([
+            'titre' => 'titre1',
+            'auteur'=> 'auteur1',
+            'nombre_pages'=> 11,
+            'categorie'=> 'categorie'
+        ]);        Livre::create([
+            'titre' => 'titre1',
+            'auteur'=> 'auteur1',
+            'nombre_pages'=> 11,
+            'categorie'=> 'categorie'
+        ]);        Livre::create([
+            'titre' => 'titre1',
+            'auteur'=> 'auteur1',
+            'nombre_pages'=> 11,
+            'categorie'=> 'categorie'
+        ]);        Livre::create([
+            'titre' => 'titre1',
+            'auteur'=> 'auteur1',
+            'nombre_pages'=> 11,
+            'categorie'=> 'categorie'
+        ]);        Livre::create([
+            'titre' => 'titre1',
+            'auteur'=> 'auteur1',
+            'nombre_pages'=> 11,
+            'categorie'=> 'categorie'
+        ]);        Livre::create([
+            'titre' => 'titre1',
+            'auteur'=> 'auteur1',
+            'nombre_pages'=> 11,
+            'categorie'=> 'categorie'
+        ]);
+        Livre::create([
+            'titre' => 'titre1',
+            'auteur'=> 'auteur1',
+            'nombre_pages'=> 11,
+            'categorie'=> 'categorie'
+        ]);
     }
 }
