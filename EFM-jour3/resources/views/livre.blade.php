@@ -10,24 +10,38 @@
 </head>
 <body class="container">
     <h2>Ajouter un Livre : </h2>
+    @if (session('success'))
+          <div class="alert alert-success">{{session('success')}}</div>
+    @endif
     <form action="{{ route('livre.store')}}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="" class="form-label">Titre : </label>
-            <input type="text" name="titre" class="form-control" id="" >
-            <span></span>
+            <input type="text" name="titre" class="form-control" id="" >         
+            @error('titre')
+             <div class="alert alert-danger">{{$message}}</div>
+            @enderror    
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Auteur : </label>
             <input type="text" name="auteur" class="form-control" id="" >
+            @error('titre')
+             <div class="alert alert-danger">{{$message}}</div>
+            @enderror 
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Nombre des pages : </label>
             <input type="number" name="nombre_pages" class="form-control" id="" >
+            @error('nombre_pages')
+             <div class="alert alert-danger">{{$message}}</div>
+            @enderror 
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Catégorie : </label>
             <input type="text" name="categorie" class="form-control" id="" >
+            @error('categorie')
+             <div class="alert alert-danger">{{$message}}</div>
+            @enderror 
         </div>
         <button type="submit" class="btn btn-primary">Ajouter</button>
 
